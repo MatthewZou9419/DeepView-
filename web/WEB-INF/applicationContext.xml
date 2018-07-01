@@ -71,6 +71,14 @@
         </property>
     </bean>
 
+    <bean id="UserEntityDAOImpl" class="DAO.Impl.UserEntityDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory">
+
+        </property>
+    </bean>
+
+
+
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**" />

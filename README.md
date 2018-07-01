@@ -1,8 +1,8 @@
 ## 板块划分
----
+
 * 实时股价：<http://echarts.baidu.com/examples/editor.html?c=candlestick-sh-2015>
 
-* 股价异动：<http://echarts.baidu.com/examples/editor.html?c=area-simple + Bootstrap表格>
+* 股价异动：http://echarts.baidu.com/examples/editor.html?c=area-simple + Bootstrap表格
 
 * 走势预测：<http://echarts.baidu.com/examples/editor.html?c=candlestick-sh-2015>
 

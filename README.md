@@ -16,7 +16,7 @@
 
 * 历史波动率：http://echarts.baidu.com/examples/editor.html?c=line-stack
 
-* 历史回看：http://echarts.baidu.com/examples/editor.html?c=pie-cumtom
+* 历史回看：http://echarts.baidu.com/examples/editor.html?c=pie-custom
 
 * 股票估值：http://echarts.baidu.com/examples/editor.html?c=line-stack  
 

@@ -19,3 +19,6 @@
 * 历史回看：http://echarts.baidu.com/examples/editor.html?c=pie-cumtom
 
 * 股票估值：http://echarts.baidu.com/examples/editor.html?c=line-stack  
+
+### 环境配置
+* jqdatasdk安装：https://www.joinquant.com/post/12479

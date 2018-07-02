@@ -23,7 +23,7 @@ var dates = rawData.map(function (item) {
 });
 
 var data = rawData.map(function (item) {
-    return [+item[1], +item[2], +item[5], +item[6]];
+    return [+item[1], +item[2], +item[3], +item[4]];
 });
 var option = {
     backgroundColor: '#21202D',

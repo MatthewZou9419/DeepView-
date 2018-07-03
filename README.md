@@ -5,7 +5,7 @@
     * api：http://localhost:8080/chart/realTimePrice?secuCode=000001.XSHG
     * 返回数据：{证券名，绘制数据[[日期，开盘价，收盘价，最低价，最高价]，...]}
 
-* 股价异动：http://echarts.baidu.com/examples/editor.html?c=area-simple + 表格
+* 股价异动：表格（以后可能会增加http://echarts.baidu.com/examples/editor.html?c=area-simple ）
 
 * 走势预测：http://echarts.baidu.com/examples/editor.html?c=candlestick-sh-2015
 

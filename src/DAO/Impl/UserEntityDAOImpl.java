@@ -22,7 +22,6 @@ public class UserEntityDAOImpl implements UserEntityDAO {
     }
 
     public boolean login(String name, String password) {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
         Session s = sessionFactory.openSession();
         Transaction tx = s.beginTransaction();
         String hql = "from UserEntity where name = " + name + " and password = " + password;

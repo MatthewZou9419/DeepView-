@@ -13,7 +13,7 @@ windows = [5, 15, 30]  # 窗口大小
 today = datetime.today()
 price_df = get_price(code, end_date=today, count=dur_month*21+max(windows), fields='close')
 for day in windows:
-    price_df['HV%d'%day] = pd.rolling_std(price_df.close, window=day)
+    price_df['HV%d'%day] = price_df.close.rolling(day).std()
 del price_df['close']
 price_df.insert(0, 'date', [v.strftime('%Y-%m-%d') for v in price_df.index])
 price_df.dropna(inplace=True)

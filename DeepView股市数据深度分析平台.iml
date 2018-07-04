@@ -37,6 +37,7 @@
     <orderEntry type="library" name="org.apache.commons:commons-dbcp2:2.3.0" level="project" />
     <orderEntry type="library" name="javax.servlet:javax.servlet-api:4.0.1" level="project" />
     <orderEntry type="library" name="com.fasterxml.jackson.core:jackson-databind:2.7.4" level="project" />
-    <orderEntry type="library" name="com.alibaba:fastjson:1.2.47" level="project" />
+    <orderEntry type="library" name="fastjson-1.2.47" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

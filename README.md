@@ -34,7 +34,9 @@
     * api：http://118.25.108.103:8080/deepview/chart/history?secuCode=000001.XSHE&monthNum=6
     * 返回值：{证券名，图例[hv5, hv15, hv30]，绘制数据[[日期，hv5波动率，hv15波动率，hv30波动率]，...}
 
-* 历史回看：http://echarts.baidu.com/examples/editor.html?c=pie-custom
+* 历史回看：
+    * echarts：http://echarts.baidu.com/examples/editor.html?c=pie-custom
+    * api：http://118.25.108.103:8080/deepview/chart/historyReview?secuCode=601238.XSHG
 
 * 股票估值：http://echarts.baidu.com/examples/editor.html?c=line-stack
 

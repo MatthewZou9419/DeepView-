@@ -1,6 +1,5 @@
 package controller;
 
-import DAO.Impl.BaseDAOImpl;
 import DAO.Impl.UserEntityDAOImpl;
 import model.UserEntity;
 import org.springframework.context.ApplicationContext;
@@ -8,8 +7,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import util.BasicResponse;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/user")

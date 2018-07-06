@@ -148,7 +148,7 @@ public class ChartController{
 
     public ArrayList<String> RunPython(String fileName, String [] argv ) throws Exception {
         String path=getClass().getResource("").getPath();
-        path=path.substring(0,path.length()-11)+ "python/" + fileName;
+        path=path.substring(1,path.length()-11)+ "python/" + fileName;
         String[] runpy= new String[2+argv.length];
         runpy[0] = "python";
         runpy[1] = path;

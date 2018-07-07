@@ -34,6 +34,27 @@ public class ChartController{
         return response;
     }
 
+    @RequestMapping(value="/abnormal",method={RequestMethod.GET})
+    public @ResponseBody
+    BasicResponse abnormal(@RequestParam String secuCode, HttpServletRequest request){
+        BasicResponse response = new BasicResponse();
+        response.setResCode("1");
+        response.setResMsg("success");
+        try {
+            ArrayList<String> result=RunPython("abnormal.py",new String[]{secuCode});
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("secuName",result.get(0));
+            jsonObject.put("stat_list", result.get(1));
+            jsonObject.put("value_list", result.get(2));
+            response.setData(jsonObject);
+        }catch (Exception e){
+            response.setResCode("-1");
+            response.setResMsg("error");
+            e.printStackTrace();
+        }
+        return response;
+    }
+
     @RequestMapping(value="/correlation",method={RequestMethod.GET})
     public @ResponseBody
     BasicResponse correlation(@RequestParam ArrayList<String> secuCode, @RequestParam String startDate, @RequestParam String endDate, HttpServletRequest request){

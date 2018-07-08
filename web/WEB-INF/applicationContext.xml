@@ -57,6 +57,9 @@
                 <value>classpath:model/MyStocksEntity.hbm.xml</value>
                 <value>classpath:model/SecurityEntity.hbm.xml</value>
                 <value>classpath:model/UserEntity.hbm.xml</value>
+                <value>classpath:model/AdminEntity.hbm.xml</value>
+                <value>classpath:model/MyStocksEntity.hbm.xml</value>
+                <value>classpath:model/UserEntity.hbm.xml</value>
             </list>
         </property>
     </bean>
@@ -77,6 +80,11 @@
         </property>
     </bean>
 
+    <bean id="SecurityDAOImpl" class="DAO.Impl.SecurityDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory">
+
+        </property>
+    </bean>
 
 
     <mvc:interceptors>

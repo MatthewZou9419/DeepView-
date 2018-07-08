@@ -4,7 +4,7 @@
 
 * 股价异动：http://echarts.baidu.com/examples/editor.html?c=area-simple + Bootstrap表格
 
-* 走势预测：http://echarts.baidu.com/examples/editor.html?c=candlestick-sh-2015
+* 市场情绪：http://echarts.baidu.com/examples/editor.html?c=line-gradient
 
 * 相关性分析：Bootstrap表格
 

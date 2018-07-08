@@ -19,7 +19,7 @@
     # 买卖方向  排名  营业部名称  买入金额  买入金额占比  卖出金额  卖出金额占比  买卖净额
     ```
 
-* 走势预测：http://echarts.baidu.com/examples/editor.html?c=candlestick-sh-2015
+* 市场情绪：http://echarts.baidu.com/examples/editor.html?c=line-gradient
 
 * 相关性分析(n支股票相关性)：
     * echarts：http://echarts.baidu.com/examples/editor.html?c=heatmap-cartesian

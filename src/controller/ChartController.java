@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import util.BasicResponse;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("/chart")
-@CrossOrigin("http://localhost:8081")
+@CrossOrigin(origins="*")
 public class ChartController{
 
     @RequestMapping(value="/realTimePrice",method={RequestMethod.GET})
@@ -24,7 +25,7 @@ public class ChartController{
             ArrayList<String> result=RunPython("realTimePrice.py",new String[]{secuCode});
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("secuName",result.get(0));
-            jsonObject.put("chartData", result.get(1));
+            jsonObject.put("chartData", JSONArray.parseArray(result.get(1)));
             response.setData(jsonObject);
         }catch (Exception e){
             response.setResCode("-1");
@@ -44,8 +45,8 @@ public class ChartController{
             ArrayList<String> result=RunPython("abnormal.py",new String[]{secuCode});
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("secuName",result.get(0));
-            jsonObject.put("stat_list", result.get(1));
-            jsonObject.put("value_list", result.get(2));
+            jsonObject.put("stat_list", JSONArray.parseArray(result.get(1)));
+            jsonObject.put("value_list", JSONArray.parseArray(result.get(2)));
             response.setData(jsonObject);
         }catch (Exception e){
             response.setResCode("-1");
@@ -69,7 +70,7 @@ public class ChartController{
             ArrayList<String> result=RunPython("correlation.py",argv);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("secuNames",result.get(0));
-            jsonObject.put("chartData", result.get(1));
+            jsonObject.put("chartData", JSONArray.parseArray(result.get(1)));
             response.setData(jsonObject);
         }catch (Exception e){
             response.setResCode("-1");
@@ -91,8 +92,8 @@ public class ChartController{
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("secuName1",result.get(0));
             jsonObject.put("secuName2",result.get(1));
-            jsonObject.put("legendData", result.get(2));
-            jsonObject.put("chartData", result.get(3));
+            jsonObject.put("legendData",JSONArray.parseArray(result.get(2)));
+            jsonObject.put("chartData", JSONArray.parseArray(result.get(3)));
             response.setData(jsonObject);
         }catch (Exception e){
             response.setResCode("-1");
@@ -114,7 +115,7 @@ public class ChartController{
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("secuName1",result.get(0));
             jsonObject.put("secuName2",result.get(1));
-            jsonObject.put("chartData", result.get(2));
+            jsonObject.put("chartData",JSONArray.parseArray(result.get(2)));
             response.setData(jsonObject);
         }catch (Exception e){
             response.setResCode("-1");
@@ -135,7 +136,7 @@ public class ChartController{
             System.out.println(result.size());
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("secuName",result.get(0));
-            jsonObject.put("chartData", result.get(1));
+            jsonObject.put("chartData",JSONArray.parseArray( result.get(1)));
             response.setData(jsonObject);
         }catch (Exception e){
             response.setResCode("-1");
@@ -157,7 +158,7 @@ public class ChartController{
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("secuName",result.get(0));
             jsonObject.put("window",result.get(1));
-            jsonObject.put("chartData", result.get(2));
+            jsonObject.put("chartData",JSONArray.parseArray(result.get(2)));
             response.setData(jsonObject);
         }catch (Exception e){
             response.setResCode("-1");
@@ -178,9 +179,9 @@ public class ChartController{
             System.out.println(result.size());
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("secuName",result.get(0));
-            jsonObject.put("month_ratio_list",result.get(1));
-            jsonObject.put("month_stat", result.get(2));
-            jsonObject.put("weekday_stat", result.get(3));
+            jsonObject.put("month_ratio_list",JSONArray.parseArray( result.get(1)));
+            jsonObject.put("month_stat",JSONArray.parseArray( result.get(2)));
+            jsonObject.put("weekday_stat",JSONArray.parseArray( result.get(3)));
             response.setData(jsonObject);
         }catch (Exception e){
             response.setResCode("-1");
@@ -194,7 +195,7 @@ public class ChartController{
         String path=getClass().getResource("").getPath();
         System.out.println(path);
 
-        path=path.substring(1,path.length()-11)+ "python/" + fileName;
+        path=path.substring(0,path.length()-11)+ "python/" + fileName;
         System.out.println(path);
         String[] runpy= new String[2+argv.length];
         runpy[0] = "python";
@@ -211,6 +212,7 @@ public class ChartController{
         while ((line = in.readLine()) != null) {
             if(!flag){
                 System.out.println(line);
+                line=line.replaceAll("\'","\"");
                 result.add(line);
             }
             flag=false;

@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 @Controller
-@CrossOrigin("http://localhost:8081")
+@CrossOrigin(origins="*")
 public abstract class BaseController<T> {
     ApplicationContext context =
             new ClassPathXmlApplicationContext("../applicationContext.xml");

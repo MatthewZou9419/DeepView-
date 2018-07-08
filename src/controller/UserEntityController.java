@@ -10,14 +10,14 @@ import util.BasicResponse;
 
 @Controller
 @RequestMapping("/user")
-@CrossOrigin("http://localhost:8081")
+@CrossOrigin(origins="*")
 public class UserEntityController extends BaseController<UserEntity> {
     ApplicationContext context =
             new ClassPathXmlApplicationContext("../applicationContext.xml");
     //此路径是在生成的class文件（out/artifacts/DeepView_war_exploded/WEB-INF/classes/controller/BaseController.class）中的相对路径
     UserEntityDAOImpl userEntityDAO = (UserEntityDAOImpl) context.getBean("UserEntityDAOImpl");
 
-    @RequestMapping(value="/login",method = {RequestMethod.POST})
+    @RequestMapping(value="/login",method = {RequestMethod.GET})
     public @ResponseBody BasicResponse login(
             @RequestParam(value="name") String name,
             @RequestParam(value="password") String password) {

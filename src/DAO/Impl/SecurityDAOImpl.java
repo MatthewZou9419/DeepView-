@@ -26,7 +26,9 @@ public class SecurityDAOImpl implements SecurityDAO {
     public List<JSONObject> dimSearchByCode(String code) {
         Session s = sessionFactory.openSession();
         Transaction tx = s.beginTransaction();
-        String hql = "from SecurityEntity where SecurityEntity.secuCode like '" + code + "%'";
+        //String hql = "from SecurityEntity where SecurityEntity.secuCode like '" + code + "%'";
+        String hql = "from SecurityEntity where secuCode like '" + code + "%'";
+        System.out.println(hql);
         Query query = s.createQuery(hql);
         List list = query.list();
         Iterator iterator = list.iterator();
@@ -45,7 +47,7 @@ public class SecurityDAOImpl implements SecurityDAO {
     public List<JSONObject> dimSearchByName(String name) {
         Session s = sessionFactory.openSession();
         Transaction tx = s.beginTransaction();
-        String hql = "from SecurityEntity where SecurityEntity.secuAbbr like '%" + name + "%'";
+        String hql = "from SecurityEntity where secuAbbr like '%" + name + "%'";
         Query query = s.createQuery(hql);
         List list = query.list();
         Iterator iterator = list.iterator();

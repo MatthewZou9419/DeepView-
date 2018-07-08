@@ -14,7 +14,7 @@ for code in code_list:
     name_list.append(get_security_info(code).display_name)
 corr_panel = get_price(code_list, start, end, fields=['close', 'pre_close'])
 ratio_df = corr_panel.close / corr_panel.pre_close - 1
-corr_df = ratio_df.corr().applymap('{:.3f}'.format)
+corr_df = ratio_df.corr().round(3)
 corr_df.columns = name_list; corr_df.index = name_list
 print(name_list)
 print(corr_df.values.tolist())

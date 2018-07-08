@@ -11,7 +11,7 @@ import util.BasicResponse;
 
 @Controller
 @RequestMapping("/security")
-@CrossOrigin("http://localhost:8081")
+@CrossOrigin(origins="*")
 public class securiyController extends BaseController<SecurityEntity> {
     ApplicationContext context =
             new ClassPathXmlApplicationContext("../applicationContext.xml");

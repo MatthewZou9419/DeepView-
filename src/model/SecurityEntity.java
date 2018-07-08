@@ -8,11 +8,11 @@ import java.util.Objects;
 @Table(name = "Security", schema = "deepView", catalog = "")
 public class SecurityEntity {
     private int id;
-    private String innerCode;
     private String secuCode;
     private String secuAbbr;
     private String chiSpelling;
     private Date listedDate;
+    private Date endDate;
     private Integer indId;
 
     @Id
@@ -23,16 +23,6 @@ public class SecurityEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "InnerCode", nullable = true, length = 5)
-    public String getInnerCode() {
-        return innerCode;
-    }
-
-    public void setInnerCode(String innerCode) {
-        this.innerCode = innerCode;
     }
 
     @Basic
@@ -56,7 +46,7 @@ public class SecurityEntity {
     }
 
     @Basic
-    @Column(name = "ChiSpelling", nullable = true, length = 4)
+    @Column(name = "ChiSpelling", nullable = true, length = 5)
     public String getChiSpelling() {
         return chiSpelling;
     }
@@ -76,6 +66,16 @@ public class SecurityEntity {
     }
 
     @Basic
+    @Column(name = "EndDate", nullable = true)
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    @Basic
     @Column(name = "IndID", nullable = true)
     public Integer getIndId() {
         return indId;
@@ -91,17 +91,17 @@ public class SecurityEntity {
         if (o == null || getClass() != o.getClass()) return false;
         SecurityEntity that = (SecurityEntity) o;
         return id == that.id &&
-                Objects.equals(innerCode, that.innerCode) &&
                 Objects.equals(secuCode, that.secuCode) &&
                 Objects.equals(secuAbbr, that.secuAbbr) &&
                 Objects.equals(chiSpelling, that.chiSpelling) &&
                 Objects.equals(listedDate, that.listedDate) &&
+                Objects.equals(endDate, that.endDate) &&
                 Objects.equals(indId, that.indId);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, innerCode, secuCode, secuAbbr, chiSpelling, listedDate, indId);
+        return Objects.hash(id, secuCode, secuAbbr, chiSpelling, listedDate, endDate, indId);
     }
 }

@@ -3,7 +3,6 @@ package controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import util.BasicResponse;
-
 import com.alibaba.fastjson.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
@@ -26,6 +25,27 @@ public class ChartController{
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("secuName",result.get(0));
             jsonObject.put("chartData", result.get(1));
+            response.setData(jsonObject);
+        }catch (Exception e){
+            response.setResCode("-1");
+            response.setResMsg("error");
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    @RequestMapping(value="/abnormal",method={RequestMethod.GET})
+    public @ResponseBody
+    BasicResponse abnormal(@RequestParam String secuCode, HttpServletRequest request){
+        BasicResponse response = new BasicResponse();
+        response.setResCode("1");
+        response.setResMsg("success");
+        try {
+            ArrayList<String> result=RunPython("abnormal.py",new String[]{secuCode});
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("secuName",result.get(0));
+            jsonObject.put("stat_list", result.get(1));
+            jsonObject.put("value_list", result.get(2));
             response.setData(jsonObject);
         }catch (Exception e){
             response.setResCode("-1");
@@ -147,9 +167,35 @@ public class ChartController{
         return response;
     }
 
+    @RequestMapping(value="/historyReview",method={RequestMethod.GET})
+    public @ResponseBody
+    BasicResponse historyReview(@RequestParam String secuCode, HttpServletRequest request){
+        BasicResponse response = new BasicResponse();
+        response.setResCode("1");
+        response.setResMsg("success");
+        try {
+            ArrayList<String> result = RunPython("historyReview.py", new String[]{secuCode});
+            System.out.println(result.size());
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("secuName",result.get(0));
+            jsonObject.put("month_ratio_list",result.get(1));
+            jsonObject.put("month_stat", result.get(2));
+            jsonObject.put("weekday_stat", result.get(3));
+            response.setData(jsonObject);
+        }catch (Exception e){
+            response.setResCode("-1");
+            response.setResMsg("error");
+            e.printStackTrace();
+        }
+        return response;
+    }
+
     public ArrayList<String> RunPython(String fileName, String [] argv ) throws Exception {
         String path=getClass().getResource("").getPath();
-        path=path.substring(1,path.length()-11)+ "python/" + fileName;
+        System.out.println(path);
+
+        path=path.substring(0,path.length()-11)+ "python/" + fileName;
+        System.out.println(path);
         String[] runpy= new String[2+argv.length];
         runpy[0] = "python";
         runpy[1] = path;

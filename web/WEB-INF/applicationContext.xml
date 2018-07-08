@@ -50,18 +50,16 @@
                 <value>model.UserEntity</value>
             </list>
         </property>
-        <property name="mappingLocations">
-            <list>
-                <value>classpath:model/AdminEntity.hbm.xml</value>
-                <value>classpath:model/IndustryEntity.hbm.xml</value>
-                <value>classpath:model/MyStocksEntity.hbm.xml</value>
-                <value>classpath:model/SecurityEntity.hbm.xml</value>
-                <value>classpath:model/UserEntity.hbm.xml</value>
-                <value>classpath:model/AdminEntity.hbm.xml</value>
-                <value>classpath:model/MyStocksEntity.hbm.xml</value>
-                <value>classpath:model/UserEntity.hbm.xml</value>
-            </list>
-        </property>
+
+        <!--<property name="mappingLocations">-->
+            <!--<list>-->
+                <!--<value>classpath:model/AdminEntity.hbm.xml</value>-->
+                <!--<value>classpath:model/IndustryEntity.hbm.xml</value>-->
+                <!--<value>classpath:model/MyStocksEntity.hbm.xml</value>-->
+                <!--<value>classpath:model/SecurityEntity.hbm.xml</value>-->
+                <!--<value>classpath:model/UserEntity.hbm.xml</value>-->
+            <!--</list>-->
+        <!--</property>-->
     </bean>
 
     <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">

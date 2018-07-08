@@ -8,7 +8,16 @@
 * 股价异动：
     * echarts：表格（以后可能会增加http://echarts.baidu.com/examples/editor.html?c=area-simple ）
     * api：http://118.25.108.103:8080/deepview/chart/abnormal?secuCode=601238.XSHG
-
+    * 返回数据：
+    ```python 
+    print(suceName) 
+    print(stat_list)
+    # 二维数组，每列含义如下：
+    # 日期  异动类型  当日总成交额
+    print(value_list)
+    # 三维数组，每个元素对应上面一个日期，每个元素是二维数组，其中每列含义如下：
+    # 买卖方向  排名  营业部名称  买入金额  买入金额占比  卖出金额  卖出金额占比  买卖净额
+    ```
 
 * 走势预测：http://echarts.baidu.com/examples/editor.html?c=candlestick-sh-2015
 
@@ -40,7 +49,22 @@
 * 历史回看：
     * echarts：http://echarts.baidu.com/examples/editor.html?c=pie-custom
     * api：http://118.25.108.103:8080/deepview/chart/historyReview?secuCode=601238.XSHG
+    * 返回数据：  
+    ```python
+    print(name)
+    print(month_ratio_list)
+    # 每个月的收益，三维数组
+    # [[['2013-01', 0.0993], ['2014-01', -0.0911], ...], [['2013-02', -0.0497], ...], ...]
+    #  -------------------这是每年1月的------------------  --------这是每年2月的-------
 
+    print(month_stat)
+    # 1-12月每月的涨、跌、平均收益，二维数组
+    # [[2, 4, -0.0259], ...]
+    #  ----这是1月的---
+
+    print(weekday_stat)
+    # 周1-周5每天的涨、跌、平均收益，二维数组，和month_stat类似
+    ```
 * 股票估值：http://echarts.baidu.com/examples/editor.html?c=line-stack
 
 ### 环境配置
